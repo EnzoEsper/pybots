@@ -17,9 +17,10 @@ filename = open('data/az_database_list.csv', 'r', 1, 'utf-8')
 csv_data = csv.reader(filename)
 csv_list = list(csv_data)
 filename.close()
+count = 0
 
-# create a continuous loop
-while True:
+# create a continuous loop that iterates five times
+while count <5:
     # select a random item from the csv_list
     random_integer = randint(1, len(csv_list) - 1)
     csv_list_item = csv_list[random_integer]
@@ -36,8 +37,9 @@ while True:
     api.update_status(status=tweet)
     print(tweet)
 
+    count += 1
     # wait 10 seconds before repeating
     time.sleep(10)
 
 
-# To quit: press CTRL+C and wait a few seconds
+# To quit before the count reachs five: press CTRL+C and wait a few seconds
