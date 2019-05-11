@@ -21,13 +21,14 @@ api = tweepy.API(auth)
 
 # What the bot will tweet
 filename = open('data/twain.txt', 'r', 1 , 'utf-8')
-tweet_text = filename.readlines()
+tweet_text = filename.readlines()  #create an array with each line of the .txt
 filename.close()
 
 # loop through the tweet_text
 for line in tweet_text[0:5]: # Will only write first 5 lines
-    api.update_status(status=line)
-    print(line)
+    next_line = line.strip() # strip retorna una copia de cada linea en la cual se remueve (en el principio y al final) del string el parametro pasado, en este caso /n
+    api.update_status(status=next_line)
+    print(next_line)
     time.sleep(10) # Sleep for 10 seconds
 
 print("All done!")
