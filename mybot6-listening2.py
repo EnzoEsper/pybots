@@ -19,13 +19,15 @@ filename.close()
 def line_number():
     return randint(0, len(tweet_text) - 1)
 
+# initially, the script will assume that the last tweet was a null value
 last_tweet = None
+
 
 def compare_tweets(lasttweet):
     print('comparing tweets...')
 
     last_tuit = lasttweet
-    # gets the most recent tweet by @ocertat and prints its id
+    # gets the most recent tweet by @EnzoEsper and prints its 
     most_recent_tweet = api.user_timeline('EnzoEsper')[0]
     most_recent_tweet = most_recent_tweet.text
     print(f'most recent tweet: {most_recent_tweet}')
@@ -40,10 +42,11 @@ def compare_tweets(lasttweet):
     else:
       print('Nothing change: nothing to tweet.')
 
-    # updates last_tweet to the most_recent_tweet
+    # this function calls itself every 5 seconds with the most recent tweet as a parameter
     time.sleep(10)
     return compare_tweets(most_recent_tweet)
 
-# runs the compare_tweets function every 5 seconds
+# runs the compare_tweets function 
 compare_tweets(last_tweet)
 
+# To quit early: press CTRL+C 
